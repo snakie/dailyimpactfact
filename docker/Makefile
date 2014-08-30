@@ -1,8 +1,14 @@
+DOCKER_CMD=docker run -p 2222:22 -p 80:80 -t -i
+DOCKER_IMG=dailyimpactfact_v1
+
 build:
-	docker build -t dailyimpactfact_v1 .
+	docker build --no-cache=false -t ${DOCKER_IMG} .
 
 run:
-	docker run -p 22 -p 80 -t -i dailyimpactfact_v1
+	${DOCKER_CMD} ${DOCKER_IMG}
 
 bash:
-	docker run -p 22 -p 80 -t -i dailyimpactfact_v1 /bin/bash
+	${DOCKER_CMD} ${DOCKER_IMG} /bin/bash
+
+clean:
+	docker rm $(docker ps -aq)
