@@ -1,4 +1,4 @@
-DOCKER_CMD=docker run -p 2222:22 -p 80:80 -t -i
+DOCKER_CMD=docker run -p 2222:22 -p 80:80 -t -i -v /Users/***REMOVED***/dev/dailyimpactfact/web:/usr/share/nginx/html:ro
 DOCKER_IMG=dailyimpactfact_v1
 
 build:
