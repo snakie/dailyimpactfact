@@ -18,6 +18,7 @@ COPY conf/nginx.repo /etc/yum.repos.d/nginx.repo
 RUN yum install nginx -y
 RUN rm /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/example_ssl.conf
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN sed -i 's/sendfile        on;/sendfile        off;/' /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/conf.d/dif.conf
 
 # perl and mojolicous
